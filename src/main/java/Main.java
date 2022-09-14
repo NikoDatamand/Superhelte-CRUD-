@@ -3,6 +3,7 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
+        int antalSuperhelte = 0;
         Scanner sc = new Scanner(System.in);
         Database superhelteDatabase = new Database();
 
@@ -12,6 +13,7 @@ public class Main {
                     Velkommen til denne superhelte database! 
                     Hvad ønsker du at foretage dig?
                     1. Opret superhelt
+                    2. Se alle superhelte
                     9. Afslut
                     """);
             valg = sc.nextInt();
@@ -34,9 +36,13 @@ public class Main {
 
                 superhelteDatabase.addSuperhero(superhelteNavn, rigtigeNavn, superkraft, svaghed, race, højde, skabelsesår);
                 System.out.println("Tak! Din superhelt er nu registreret.");
+                antalSuperhelte++;
+            } else if (valg == 2) {
+                System.out.println(superhelteDatabase.getArrayList(antalSuperhelte));
             }
             else {
                 System.exit(0);
+                System.out.println(" ");
             }
         } while (valg != 9);
     }

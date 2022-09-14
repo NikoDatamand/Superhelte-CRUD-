@@ -9,8 +9,11 @@ public class Database {
         database.add(superhero);
     }
 
-    public Superhero getArrayList (int x) {
-        return database.get(x);
+    public String getArrayList (int x) {
+       for (int i = 0; i < x; i++) {
+            System.out.println(database.get(i));
+        }
+        return " ";
     }
 
 }
