@@ -14,6 +14,7 @@ public class Main {
                     Hvad ønsker du at foretage dig?
                     1. Opret superhelt
                     2. Se alle superhelte
+                    3. Find superhelt
                     9. Afslut
                     """);
             valg = sc.nextInt();
@@ -39,6 +40,10 @@ public class Main {
                 antalSuperhelte++;
             } else if (valg == 2) {
                 System.out.println(superhelteDatabase.getArrayList(antalSuperhelte));
+            } else if (valg == 3) {
+                System.out.println("Hvad hedder superhelten du leder efter?");
+                String findSuperhelt = sc.nextLine();
+                System.out.println(superhelteDatabase.searchSuperhero(findSuperhelt));
             }
             else {
                 System.exit(0);

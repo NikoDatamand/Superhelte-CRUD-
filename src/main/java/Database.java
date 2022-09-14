@@ -16,4 +16,17 @@ public class Database {
         return " ";
     }
 
+    public String searchSuperhero (String x) {
+        boolean fundet = false;
+        for (Superhero y : database) {
+            if (y.getSuperhelteNavn().equals(x)) {
+                System.out.println(y);
+                fundet = true;
+            }
+        } if (!fundet) {
+            System.out.println("En superhelt med det navn kunne ikke findes i databasen.");
+        }
+        return " ";
+    }
+
 }
