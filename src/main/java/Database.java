@@ -29,4 +29,34 @@ public class Database {
         return " ";
     }
 
+    public String editSuperhero (String x) {
+        boolean fundet = false;
+        for (Superhero y : database) {
+            if (y.getSuperhelteNavn().contains(x)) {
+                fundet = true;
+            }
+        } if (!fundet) {
+            System.out.println("En superhelt med det navn kunne ikke findes i databasen.");
+        }
+        return " ";
+    }
+
+    public void setSuperhero (String x, String a, String b, String c, String d, boolean e, double f, int g) {
+        boolean fundet = false;
+        for (Superhero y : database) {
+            if (y.getSuperhelteNavn().contains(x)) {
+                y.setSuperhelteNavn(a);
+                y.setRigtigeNavn(b);
+                y.setSuperkraft(c);
+                y.setSvaghed(d);
+                y.setRace(e);
+                y.setHøjde(f);
+                y.setSkabelsesår(g);
+                fundet = true;
+            }
+        } if (!fundet) {
+            System.out.println("En superhelt med det navn kunne ikke findes i databasen.");
+        }
+    }
+
 }
