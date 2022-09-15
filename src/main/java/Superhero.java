@@ -66,6 +66,12 @@ public class Superhero {
     }
 
     public String toString() {
-        return "Superhelten: " + superhelteNavn + "\nRigtige navn: " + rigtigeNavn + "\nSuperkraft(er): " + superkraft + "\nSvaghed(er): " + svaghed + "\nEr helten et menneske: " + race + "\nHeltens højde: " + højde + "\nHvornår blev helten skabt: " + skabelsesår +"\n ";
+        String raceBrugervenlig = " ";
+        if (race == true) {
+            raceBrugervenlig = "JA";
+        } else if (race == false) {
+            raceBrugervenlig = "NEJ";
+        }
+        return "Superhelten: " + superhelteNavn + "\nRigtige navn: " + rigtigeNavn + "\nSuperkraft(er): " + superkraft + "\nSvaghed(er): " + svaghed + "\nEr helten et menneske: " + raceBrugervenlig + "\nHeltens højde: " + højde + "\nHvornår blev helten skabt: " + skabelsesår +"\n ";
     }
 }

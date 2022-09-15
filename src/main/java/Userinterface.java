@@ -31,13 +31,19 @@ public class Userinterface {
                 System.out.println("Har superhelten en svaghed eller flere? Hvilke(n)?");
                 String svaghed = sc.nextLine();
                 System.out.println("Er superhelten et menneske?");
-                boolean race = sc.nextBoolean();
+                String race = sc.nextLine();
+                boolean raceRaw = true;
+                if (race.equalsIgnoreCase("ja")) {
+                    raceRaw = true;
+                } else if (race.equalsIgnoreCase("nej")) {
+                    raceRaw = false;
+                }
                 System.out.println("Hvor høj er superhelten?");
                 double højde = sc.nextDouble();
                 System.out.println("Hvornår blev superhelten skabt?");
                 int skabelsesår = sc.nextInt();
 
-                superhelteDatabase.addSuperhero(superhelteNavn, rigtigeNavn, superkraft, svaghed, race, højde, skabelsesår);
+                superhelteDatabase.addSuperhero(superhelteNavn, rigtigeNavn, superkraft, svaghed, raceRaw, højde, skabelsesår);
                 System.out.println(" ");
                 System.out.println("Tak! Din superhelt er nu registreret.");
                 System.out.println(" ");
@@ -63,13 +69,19 @@ public class Userinterface {
                 System.out.println("Indtast superheltens svaghed(er)");
                 String redigerSvaghed = sc.nextLine();
                 System.out.println("Er superhelten et menneske?");
-                boolean redigerRace = sc.nextBoolean();
+                String redigerRace = sc.nextLine();
+                boolean redigerRaceRaw = true;
+                if (redigerRace.equalsIgnoreCase("ja")) {
+                    redigerRaceRaw = true;
+                } else if (redigerRace.equalsIgnoreCase("nej")) {
+                    redigerRaceRaw = false;
+                }
                 System.out.println("Indtast superheltens højde");
                 double redigerHøjde = sc.nextDouble();
                 System.out.println("Indtast skabelsesåret for superhelten");
                 int redigerSkabelsesår = sc.nextInt();
                 System.out.println(" ");
-                superhelteDatabase.setSuperhero(redigerSuperhelt, redigerSuperhelteNavn, redigerRigtigeNavn, redigerSuperkraft, redigerSvaghed, redigerRace, redigerHøjde, redigerSkabelsesår);
+                superhelteDatabase.setSuperhero(redigerSuperhelt, redigerSuperhelteNavn, redigerRigtigeNavn, redigerSuperkraft, redigerSvaghed, redigerRaceRaw, redigerHøjde, redigerSkabelsesår);
                 System.out.println("Superheltens informationer er nu opdateret!");
                 System.out.println(" ");
             }
