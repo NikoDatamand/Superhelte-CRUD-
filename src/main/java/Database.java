@@ -19,7 +19,7 @@ public class Database {
     public String searchSuperhero (String x) {
         boolean fundet = false;
         for (Superhero y : database) {
-            if (y.getSuperhelteNavn().equals(x)) {
+            if (y.getSuperhelteNavn().contains(x)) {
                 System.out.println(y);
                 fundet = true;
             }
