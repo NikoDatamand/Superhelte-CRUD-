@@ -9,7 +9,7 @@ public class Userinterface {
 
     public String toString() {
         do {
-
+            System.out.println(" ");
             System.out.println("""
                     Velkommen til denne superhelte database! 
                     Hvad ønsker du at foretage dig?
@@ -39,14 +39,24 @@ public class Userinterface {
                     raceRaw = false;
                 }
                 System.out.println("Hvor høj er superhelten?");
-                double højde = sc.nextDouble();
+                double højde = readDouble();
                 System.out.println("Hvornår blev superhelten skabt?");
-                int skabelsesår = sc.nextInt();
+                int skabelsesår = readInteger();
+
+                /* boolean x = false;
+                while (x == false) {
+                try {
+                    skabelsesår = readNumber();
+                    checkInt(skabelsesår);
+                    x = true;
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Du skal indtaste et tal højere end 0");
+                }
+                } */
 
                 superhelteDatabase.addSuperhero(superhelteNavn, rigtigeNavn, superkraft, svaghed, raceRaw, højde, skabelsesår);
                 System.out.println(" ");
                 System.out.println("Tak! Din superhelt er nu registreret.");
-                System.out.println(" ");
                 antalSuperhelte++;
             } else if (valg == 2) {
                 System.out.println(" ");
@@ -77,20 +87,40 @@ public class Userinterface {
                     redigerRaceRaw = false;
                 }
                 System.out.println("Indtast superheltens højde");
-                double redigerHøjde = sc.nextDouble();
+                double redigerHøjde = readDouble();
                 System.out.println("Indtast skabelsesåret for superhelten");
-                int redigerSkabelsesår = sc.nextInt();
+                int redigerSkabelsesår = readInteger();
                 System.out.println(" ");
                 superhelteDatabase.setSuperhero(redigerSuperhelt, redigerSuperhelteNavn, redigerRigtigeNavn, redigerSuperkraft, redigerSvaghed, redigerRaceRaw, redigerHøjde, redigerSkabelsesår);
                 System.out.println("Superheltens informationer er nu opdateret!");
                 System.out.println(" ");
             }
-            else {
-                System.exit(0);
-                System.out.println(" ");
+            else if (valg != 9) {
+                System.out.println("Dette tal har ingen funktion, prøv igen!");
             }
         } while (valg != 9);
         return " ";
     }
 
+    public int readInteger () {
+        while (!sc.hasNextInt()) {
+            String text = sc.nextLine();
+            System.out.println("Du skal skrive et heltal!");
+        }
+        return sc.nextInt();
+    }
+
+    public double readDouble () {
+        while (!sc.hasNextDouble()) {
+            String text = sc.nextLine();
+            System.out.println("Du skal skrive et kommatal!");
+        }
+        return sc.nextDouble();
+    }
+
+    /* public void checkInt (int skabelsesår) {
+        if (skabelsesår < 0) {
+            throw new IllegalArgumentException("Vade retro, Satana!");
+        }
+    } */
 }
