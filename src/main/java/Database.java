@@ -17,16 +17,18 @@ public class Database {
     }
 
     public String searchSuperhero (String x) {
+        String returnMessage = " ";
         boolean fundet = false;
         for (Superhero y : database) {
             if (y.getSuperhelteNavn().contains(x)) {
                 System.out.println(y);
+                returnMessage = " ";
                 fundet = true;
             }
         } if (!fundet) {
-            System.out.println("En superhelt med det navn kunne ikke findes i databasen.");
+            returnMessage = "En superhelt med det navn kunne ikke findes i databasen.";
         }
-        return " ";
+        return returnMessage;
     }
 
     public String editSuperhero (String x) {
@@ -42,7 +44,7 @@ public class Database {
     }
 
     public void setSuperhero (String x, String a, String b, String c, String d, boolean e, double f, int g) {
-        boolean fundet = false;
+       // boolean fundet = false;
         for (Superhero y : database) {
             if (y.getSuperhelteNavn().contains(x)) {
                 y.setSuperhelteNavn(a);
@@ -52,11 +54,15 @@ public class Database {
                 y.setRace(e);
                 y.setHøjde(f);
                 y.setSkabelsesår(g);
-                fundet = true;
+                //fundet = true;
             }
-        } if (!fundet) {
-            System.out.println("En superhelt med det navn kunne ikke findes i databasen.");
-        }
+        } /*if (!fundet) {
+            System.out.println(" ");
+        } */
+    }
+
+    public String getReturnMessage (String z) {
+        return z;
     }
 
 }

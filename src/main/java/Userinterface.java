@@ -68,32 +68,38 @@ public class Userinterface {
                 System.out.println(superhelteDatabase.searchSuperhero(findSuperhelt));
             } else if (valg == 4) {
                 System.out.println("Hvad hedder superhelten du vil redigere?");
-                String redigerSuperhelt = sc.nextLine();
-                System.out.println(" ");
-                System.out.println("Indtast det ønskede superheltenavn");
-                String redigerSuperhelteNavn = sc.nextLine();
-                System.out.println("Indtast det ønskede rigtige navn på superhelten");
-                String redigerRigtigeNavn = sc.nextLine();
-                System.out.println("Indtast superkraften/superkrafterne som superhelten skal have");
-                String redigerSuperkraft = sc.nextLine();
-                System.out.println("Indtast superheltens svaghed(er)");
-                String redigerSvaghed = sc.nextLine();
-                System.out.println("Er superhelten et menneske?");
-                String redigerRace = sc.nextLine();
-                boolean redigerRaceRaw = true;
-                if (redigerRace.equalsIgnoreCase("ja")) {
-                    redigerRaceRaw = true;
-                } else if (redigerRace.equalsIgnoreCase("nej")) {
-                    redigerRaceRaw = false;
+                String redigerFindSuperhelt = sc.nextLine();
+                String findesSuperhelten = superhelteDatabase.searchSuperhero(redigerFindSuperhelt);
+                if (superhelteDatabase.getReturnMessage(findesSuperhelten) == " ") {
+                    System.out.println(" ");
+                    System.out.println("Indtast det ønskede superheltenavn");
+                    String redigerSuperhelteNavn = sc.nextLine();
+                    System.out.println("Indtast det ønskede rigtige navn på superhelten");
+                    String redigerRigtigeNavn = sc.nextLine();
+                    System.out.println("Indtast superkraften/superkrafterne som superhelten skal have");
+                    String redigerSuperkraft = sc.nextLine();
+                    System.out.println("Indtast superheltens svaghed(er)");
+                    String redigerSvaghed = sc.nextLine();
+                    System.out.println("Er superhelten et menneske?");
+                    String redigerRace = sc.nextLine();
+                    boolean redigerRaceRaw = true;
+                    if (redigerRace.equalsIgnoreCase("ja")) {
+                        redigerRaceRaw = true;
+                    } else if (redigerRace.equalsIgnoreCase("nej")) {
+                        redigerRaceRaw = false;
+                    }
+                    System.out.println("Indtast superheltens højde");
+                    double redigerHøjde = readDouble();
+                    System.out.println("Indtast skabelsesåret for superhelten");
+                    int redigerSkabelsesår = readInteger();
+                    System.out.println(" ");
+                    superhelteDatabase.setSuperhero(redigerFindSuperhelt, redigerSuperhelteNavn, redigerRigtigeNavn, redigerSuperkraft, redigerSvaghed, redigerRaceRaw, redigerHøjde, redigerSkabelsesår);
+                    System.out.println("Superheltens informationer er nu opdateret!");
+                    System.out.println(" ");
+                } else if (superhelteDatabase.getReturnMessage(redigerFindSuperhelt) == "En superhelt med det navn kunne ikke findes i databasen."){
+                    System.out.println("En superhelt med det navn kunne ikke findes i databasen.");
                 }
-                System.out.println("Indtast superheltens højde");
-                double redigerHøjde = readDouble();
-                System.out.println("Indtast skabelsesåret for superhelten");
-                int redigerSkabelsesår = readInteger();
-                System.out.println(" ");
-                superhelteDatabase.setSuperhero(redigerSuperhelt, redigerSuperhelteNavn, redigerRigtigeNavn, redigerSuperkraft, redigerSvaghed, redigerRaceRaw, redigerHøjde, redigerSkabelsesår);
-                System.out.println("Superheltens informationer er nu opdateret!");
-                System.out.println(" ");
+
             }
             else if (valg != 9) {
                 System.out.println("Dette tal har ingen funktion, prøv igen!");
