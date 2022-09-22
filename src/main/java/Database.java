@@ -46,12 +46,11 @@ public class Database {
     }
 
     public void deleteSuperhero (String x) {
-        for (Superhero y : database) {
-            if (y.getSuperhelteNavn().contains(x)) {
-                int indexOf = database.indexOf(y);
-                database.remove(indexOf);
+            for (int i = 0; i < database.size(); i++) {
+                if (database.get(i).equals(x)) {
+                    database.remove(database.get(i));
+                }
             }
-        }
     }
 
     public String getReturnMessage (String z) {

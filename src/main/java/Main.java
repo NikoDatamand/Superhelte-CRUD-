@@ -6,7 +6,6 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Userinterface ui = new Userinterface();
         ui.toString();
-
     }
 
 }
