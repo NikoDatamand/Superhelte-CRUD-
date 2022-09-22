@@ -17,6 +17,7 @@ public class Userinterface {
                     2. Se alle superhelte
                     3. Find superhelt
                     4. Rediger superhelt
+                    5. Slet superhelt
                     9. Afslut
                     """);
             valg = sc.nextInt();
@@ -96,19 +97,43 @@ public class Userinterface {
                     superhelteDatabase.setSuperhero(redigerFindSuperhelt, redigerSuperhelteNavn, redigerRigtigeNavn, redigerSuperkraft, redigerSvaghed, redigerRaceRaw, redigerHøjde, redigerSkabelsesår);
                     System.out.println("Superheltens informationer er nu opdateret!");
                     System.out.println(" ");
-                } else if (superhelteDatabase.getReturnMessage(redigerFindSuperhelt) == "En superhelt med det navn kunne ikke findes i databasen."){
+                } else if (superhelteDatabase.getReturnMessage(redigerFindSuperhelt) == "En superhelt med det navn kunne ikke findes i databasen.") {
                     System.out.println("En superhelt med det navn kunne ikke findes i databasen.");
                 }
 
+            } else if (valg == 5) {
+                System.out.println("Hvad hedder superhelten du vil slette?");
+                String sletFindSuperhelt = sc.nextLine();
+                String findesSuperhelten = superhelteDatabase.searchSuperhero(sletFindSuperhelt);
+                if (superhelteDatabase.getReturnMessage(findesSuperhelten) == " ") {
+                    System.out.println(" ");
+                    System.out.println("Er du sikker på at ville slette " + sletFindSuperhelt + " ?");
+                    String areYouSure = sc.nextLine();
+                    boolean areYouSureRaw = false;
+                    if (areYouSure.equalsIgnoreCase("ja")) {
+                        areYouSureRaw = true;
+                    } else if (areYouSure.equalsIgnoreCase("nej")) {
+                        areYouSureRaw = false;
+                    }
+                    if (areYouSureRaw == true){
+                        superhelteDatabase.deleteSuperhero(sletFindSuperhelt);
+                        System.out.println("Superhelten er nu slettet.");
+                        antalSuperhelte--;
+                    } else {
+                        System.out.println(" ");
+                    }
+                } else if (superhelteDatabase.getReturnMessage(findesSuperhelten) == "En superhelt med det navn kunne ikke findes i databasen.") {
+                    System.out.println("En superhelt med det navn kunne ikke findes i databasen.");
+                } else if (valg != 9) {
+                    System.out.println("Dette tal har ingen funktion, prøv igen!");
+                }
             }
-            else if (valg != 9) {
-                System.out.println("Dette tal har ingen funktion, prøv igen!");
-            }
-        } while (valg != 9);
+
+        } while (valg != 9) ;
         return " ";
     }
 
-    public int readInteger () {
+    public int readInteger() {
         while (!sc.hasNextInt()) {
             String text = sc.nextLine();
             System.out.println("Du skal skrive et heltal!");
@@ -116,17 +141,11 @@ public class Userinterface {
         return sc.nextInt();
     }
 
-    public double readDouble () {
+    public double readDouble() {
         while (!sc.hasNextDouble()) {
             String text = sc.nextLine();
             System.out.println("Du skal skrive et kommatal!");
         }
         return sc.nextDouble();
     }
-
-    /* public void checkInt (int skabelsesår) {
-        if (skabelsesår < 0) {
-            throw new IllegalArgumentException("Vade retro, Satana!");
-        }
-    } */
 }
