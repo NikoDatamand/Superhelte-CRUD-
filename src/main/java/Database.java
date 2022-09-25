@@ -31,6 +31,16 @@ public class Database {
         return returnMessage;
     }
 
+    public int searchSuperheroDelete (String x) {
+        int superheroIndex = 0;
+        for (Superhero y : database) {
+            if (y.getSuperhelteNavn().contains(x)) {
+                 superheroIndex = database.indexOf(y);
+            }
+        }
+        return superheroIndex;
+    }
+
     public void setSuperhero (String x, String a, String b, String c, String d, boolean e, double f, int g) {
         for (Superhero y : database) {
             if (y.getSuperhelteNavn().contains(x)) {
@@ -46,11 +56,12 @@ public class Database {
     }
 
     public void deleteSuperhero (String x) {
-            for (int i = 0; i < database.size(); i++) {
-                if (database.get(i).equals(x)) {
-                    database.remove(database.get(i));
-                }
-            }
+            //for (int i = 0; i < database.size(); i++) {
+                //if () {
+        database.get(searchSuperheroDelete(x));
+        database.remove(searchSuperheroDelete(x));
+              //  }
+           // }
     }
 
     public String getReturnMessage (String z) {
